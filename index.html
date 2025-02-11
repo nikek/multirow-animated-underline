@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text hover effect on multiple lines</title>
+    <style>
+      html {
+        font-size: 20px;
+      }
+      main {
+        max-width: 400px;
+      }
+      h1 {
+        text-wrap: balance;
+        font-family: sans-serif;
+      }
+      a {
+        color: slateblue;
+        text-decoration: none;
+
+        /* This is the magic */
+        background: linear-gradient(
+          transparent calc(100% - 2px),
+          currentcolor 5px
+        );
+
+        background-repeat: no-repeat;
+        background-size: 0 100%;
+        transition: background-size 0.5s;
+
+        &:hover,
+        &:focus {
+          background-size: 100% 100%;
+        }
+      }
+
+      span {
+        background: linear-gradient(papayawhip, lightcoral);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        animation: bg 2s infinite;
+      }
+
+      @keyframes bg {
+        0% {
+          background-size: 0 100%;
+        }
+        100% {
+          background-size: 100% 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>
+        <a href="#">
+          Hover over this link and you'll see the underline animating along the
+          text.. which is pretty neat.
+        </a>
+      </h1>
+      <p>
+        The underline is actually a background: linear-gradient(). It's
+        transparent 100%-2px and colored 2px. We then animate the
+        background-size x axis from 0 to 100%. Works because <code>a</code> is
+        an inline element and the background goes along the text. <br />
+        <span
+          >Like <br />
+          this.</span
+        >
+      </p>
+    </main>
+  </body>
+</html>
