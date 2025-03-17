@@ -19,10 +19,14 @@
         color: slateblue;
         text-decoration: none;
 
-        /* This is the magic */
+        /* This is the magic. The underline is a
+           linear-gradient that is transparent 100%-2px.
+           Using the same color stop for both colors
+           makes a hard cut between them */
+        --color-stop: calc(100% - 2px);
         background: linear-gradient(
-          transparent calc(100% - 2px),
-          currentcolor 5px
+          transparent var(--color-stop),
+          currentcolor var(--color-stop)
         );
 
         background-repeat: no-repeat;
